@@ -35,6 +35,28 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('body > span.error').should('be.visible', 'Valide os campos obrigatórios!')
         
     })
+
+    it('Preenche o telefone com caracteres nao numericos e valida se o campo esta vazio', function() {
+
+        cy.get('#phone').type('abcdefghij') 
+        cy.get('#phone').should('be.empty')
+
+    })
+
+    it('Exibe mensagem de erro quando o campo telefone se torna obrigatorio mas nao e preenchido antes do envio', function() {
+
+        cy.get('#phone-checkbox').click()
+        cy.get('#firstName').type('Arthur')
+        cy.get('#lastName').type('Silva')
+        cy.get('#email').type('arthurr.rodrigues187@gmail.com')
+        cy.get('#open-text-area').type('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.', {delay:0})
+        cy.get('#white-background > form > button').click()
+        cy.get('body > span.error').should('be.visible', 'Valide os campos obrigatórios!')
+
+
+
+    })
   })
 
 
+//#phone
