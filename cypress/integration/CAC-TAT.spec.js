@@ -20,5 +20,6 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#open-text-area').type('Muito obrigado pelo apoio.')
         cy.get('#white-background > form > button').click()
 
+        
     })
-  })
+  }) 
